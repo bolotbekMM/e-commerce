@@ -70,7 +70,7 @@ const Header = () => {
         </div>
         <div className="favorit-cart">
           <Link to="/favorites" className="cart">
-            <div className="divOfImage">
+            <div className="divOfImages">
               <LikeIcon
                 className="iconStyle"
                 onClick={() => {
@@ -83,7 +83,7 @@ const Header = () => {
           </Link>
           <div className="div-of-button">
             <Link to="/cart" className="cart">
-              <div className="divOfImage">
+              <div className="divOfImages">
                 <CartIcon className="iconStyle" />
                 {dotNotificationCart && <DotIcon className="dotIcon" />}
               </div>

@@ -1,0 +1,68 @@
+.main-containerr {
+  width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 11px 99px 64px 99px;
+  box-sizing: border-box;
+}
+
+.divOfHeader h3 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  color: #393939;
+}
+
+.big-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  box-sizing: border-box;
+}
+
+.box2 {
+  width: 286px;
+  height: 375px;
+}
+
+.divOfImagesss {
+  box-sizing: border-box;
+  width: 286px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+}
+.icon-img {
+  height: 100%;
+  width: auto;
+}
+
+.image-innertitle {
+  position: absolute;
+  margin-top: 30%;
+  left: 100%;
+}
+
+.divOfNewCollectionButton {
+}
+.div-of-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.arrow {
+  width: 10px;
+  height: 17.5px;
+}

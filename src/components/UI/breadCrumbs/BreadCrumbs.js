@@ -16,6 +16,7 @@ const Breadcrumbss = () => {
     news: 'Новости',
     favorites: 'Избранное',
     searchpage: 'Результаты поиска',
+    help: 'Помощь',
   };
   return (
     <div className="breadcrumb">

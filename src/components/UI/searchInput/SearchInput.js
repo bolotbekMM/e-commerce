@@ -22,9 +22,10 @@ export default function SearchInput(props) {
         sx={{ width: '662px', height: '44px', p: '0px' }}
       >
         <StyledSelect2
+          clearIcon={false}
+          closeText="none"
           freeSolo
           id="free-solo-2-demo"
-          disableClearable
           options={top100Films.map((option) => option.title)}
           renderInput={(params) => (
             <TextField
@@ -34,7 +35,6 @@ export default function SearchInput(props) {
               label="Поиск"
               InputProps={{
                 ...params.InputProps,
-                type: 'search',
               }}
             />
           )}
@@ -47,7 +47,7 @@ export default function SearchInput(props) {
 const StyledSelect = styled(Stack)`
   & .MuiAutocomplete-root .MuiOutlinedInput-root {
     width: 662px;
-    height: 44px;
+    height: 60px;
     box-sizing: border-box;
     padding: 11px 20px 13px;
     border: 1px solid #e0e0e0;
