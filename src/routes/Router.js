@@ -21,6 +21,7 @@ const Router = () => {
         path="/collections/:product/:productDetails"
         element={<ProductDetails />}
       />
+      <Route path="/:productDetails" element={<ProductDetails />} />
       <Route path="/cart" element={<p>Корзина </p>} />
       <Route path="/searchpage" element={<SearchPage />} />
       <Route path="/help" element={<Help />} />

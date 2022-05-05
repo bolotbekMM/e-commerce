@@ -1,44 +1,48 @@
 import React from 'react';
 import './Collections.css';
 
-import Icon from '../../../assets/images/collectionsIcon/collectionimage6.png';
-// import Icon2 from '../../../assets/images/collectionsIcon/collectionimage3.png';
-import Arrow from '../../../assets/images/arrowright.svg';
-// import Triangle from '../../../assets/images/triangle.svg';
-
 import { ReButton } from '../../../components/UI/reButton/ReButton';
+import { getCollectionRequest } from '../../../api/storeService';
+import CollectionItem from '../../collections/CollectionItem';
 
 const Collections = () => {
+  const [posts, setPosts] = React.useState([]);
 
-  
+  const getCollection = async () => {
+    try {
+      const response = await getCollectionRequest();
+      setPosts(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    getCollection();
+  }, []);
+
+  const [count, setCount] = React.useState(4);
+  const addClickHandler = () => {
+    setCount((count) => count + 4);
+  };
+
   return (
     <div className="main-containerr">
       <div className="divOfHeader">
         <h3>Коллекция</h3>
       </div>
       <div className="big-box">
-        <div className="box2">
-          <div className="divOfImagesss">
-            <img src={Icon} alt="icon" />
-          </div>
-          <div className="divOfNewCollectionButton">
-            <ReButton buttonStyle="long-button">
-              Смотреть все <img className="arrow" src={Arrow} alt="arrow" />
-            </ReButton>
-          </div>
-        </div>
-        <div className="box2">
-          <div className="divOfImagesss">
-            {/* <img className="icon-img" src={Icon2} alt="icon" /> */}
-            {/* <img className="triangle" src={Triangle} alt="Triangle" /> */}
-          </div>
-          <div className="divOfNewCollectionButton">
-            <ReButton buttonStyle="long-button">Смотреть все {'  >'} </ReButton>
-          </div>
-        </div>
+        {posts.length !== 0 &&
+          posts.slice(0, count).map((item) => {
+            return <CollectionItem key={item.id} item={item} />;
+          })}
       </div>
       <div className="div-of-button">
-        <ReButton buttonStyle="short-button">Еще</ReButton>
+        {count === 16 || (
+          <ReButton buttonStyle="short-button" onClick={addClickHandler}>
+            Еще
+          </ReButton>
+        )}
       </div>
     </div>
   );

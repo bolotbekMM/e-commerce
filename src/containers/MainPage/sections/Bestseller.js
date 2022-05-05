@@ -4,12 +4,14 @@ import './Bestseller.css';
 import { ReButton } from '../../../components/UI/reButton/ReButton';
 import BestSellerItems from './BestSellerItems';
 import { getCollectionRequest } from '../../../api/storeService';
+import { Link } from 'react-router-dom';
 
 const Bestseller = () => {
   const [count, setCount] = React.useState(8);
   const [posts, setPosts] = React.useState([]);
 
   const getBestsellerProducts = async () => {
+
     try {
       const response = await getCollectionRequest();
       const best = [];
@@ -18,6 +20,7 @@ const Bestseller = () => {
           item.bestseller ? best.push(item) : ''
         );
         return setPosts(best);
+
       });
     } catch (error) {
       console.log(error);
@@ -34,13 +37,17 @@ const Bestseller = () => {
 
   return (
     <div className="main-containerr">
-      <div className="divOfHeader-mainpage">
+      <div className="divOfHeader">
         <h3 className="bestseller-title">Хит продаж</h3>
       </div>
       <div className="big-box">
         {posts.length !== 0 &&
           posts.slice(0, count).map((item) => {
-            return <BestSellerItems item={item} />;
+            return (
+              <Link to={`/${item.id}`} key={item.id}>
+                <BestSellerItems item={item} />
+              </Link>
+            );
           })}
       </div>
       <div className="div-of-button">

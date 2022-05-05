@@ -10,11 +10,10 @@
   box-sizing: border-box;
 }
 
-.divOfHeader {
+.divOfHeader-page {
   display: flex;
   justify-content: left;
   align-items: center;
-  text-align: right;
 }
 
 .divOfHeader-h3 {

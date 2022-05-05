@@ -1,75 +1,59 @@
 import React from 'react';
 import './NewProducts.css';
 
-import Icon from '../../../assets/images/bestsellerImages/bestseller8.jpg';
 import { ReButton } from '../../../components/UI/reButton/ReButton';
+import { getCollectionRequest } from '../../../api/storeService';
+import BestSellerItems from './BestSellerItems';
+import { Link } from 'react-router-dom';
 
 const NewProducts = () => {
+  const [count, setCount] = React.useState(4);
+  const [posts, setPosts] = React.useState([]);
+
+  const getNewProducts = async () => {
+    try {
+      const response = await getCollectionRequest();
+      const newProd = [];
+      response.data.map((item) => {
+        item.products.filter((item) =>
+          item.bestseller ? newProd.push(item) : ''
+        );
+        return setPosts(newProd);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    getNewProducts();
+  }, []);
+
+  const addClickHandler = () => {
+    setCount((count) => count + 4);
+  };
+
   return (
     <div className="main-containerr">
       <div className="divOfHeader">
         <h3>Новинки</h3>
       </div>
       <div className="big-box">
-        <div className="box1">
-          <div className="divOfImage">
-            <img src={Icon} alt="icon" />
-          </div>
-          <div className="divOftitlee">
-            <h4 className="typeofcloses">Вечернее платье</h4>
-            <p className="price">
-              <span>1 365</span> р
-            </p>
-            <p className="size">
-              <span>Размер:</span> <span>42-50</span>
-            </p>
-          </div>
-        </div>
-        <div className="box1">
-          <div className="divOfImage">
-            <img src={Icon} alt="icon" />
-          </div>
-          <div className="divOftitlee">
-            <h4 className="typeofcloses">Вечернее платье</h4>
-            <p className="price">
-              <span>1 365</span> р
-            </p>
-            <p className="size">
-              <span>Размер:</span> <span>42-50</span>
-            </p>
-          </div>
-        </div>
-        <div className="box1">
-          <div className="divOfImage">
-            <img src={Icon} alt="icon" />
-          </div>
-          <div className="divOftitlee">
-            <h4 className="typeofcloses">Вечернее платье</h4>
-            <p className="price">
-              <span>1 365</span> р
-            </p>
-            <p className="size">
-              <span>Размер:</span> <span>42-50</span>
-            </p>
-          </div>
-        </div>
-        <div className="box1">
-          <div className="divOfImage">
-            <img src={Icon} alt="icon" />
-          </div>
-          <div className="divOftitlee">
-            <h4 className="typeofcloses">Вечернее платье</h4>
-            <p className="price">
-              <span>1 365</span> р
-            </p>
-            <p className="size">
-              <span>Размер:</span> <span>42-50</span>
-            </p>
-          </div>
-        </div>
+        {posts.length !== 0 &&
+          posts.slice(0, count).map((item) => {
+            return (
+              <Link to={`/${item.id}`} key={item.id}>
+                <BestSellerItems item={item} />
+              </Link>
+            );
+          })}
       </div>
       <div className="div-of-button">
-        <ReButton buttonStyle="short-button">Еще</ReButton>
+        {count === 16 || (
+          <ReButton buttonStyle="short-button" onClick={addClickHandler}>
+            Еще
+          </ReButton>
+        )}
       </div>
     </div>
   );

@@ -15,11 +15,19 @@ const ProductDetails = () => {
   const getCollection = async () => {
     try {
       const response = await getCollectionRequest();
-      await setdetails(
-        response.data
-          .filter((item) => item.id === idOfCollection)[0]
-          .products.filter((items) => items.id === prodDetails)[0]
-      );
+      if (!!idOfCollection) {
+        setdetails(
+          response.data
+            .filter((item) => item.id === idOfCollection)[0]
+            .products.filter((items) => items.id === prodDetails)[0]
+        );
+      }
+      if (!idOfCollection) {
+        response.data.map((item) => {
+          const product = item.products.find((item) => item.id === prodDetails);
+          return setdetails(product);
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +36,6 @@ const ProductDetails = () => {
   React.useEffect(() => {
     getCollection();
   }, []);
-  console.log(details.colors, '111details');
 
   return (
     <div className="main-boxDetail">

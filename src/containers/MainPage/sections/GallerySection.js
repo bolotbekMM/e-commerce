@@ -43,7 +43,7 @@ const GallerySection = () => {
     };
   }, [index]);
   return (
-    <div className="main-container">
+    <div className="main-containerr">
       <div className="slideshow">
         <div
           className="slideshowSlider"
