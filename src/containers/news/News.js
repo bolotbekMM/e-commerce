@@ -19,6 +19,10 @@ const News = () => {
 
   return (
     <div className="main-container">
+      <div className="divOfHeader-page">
+        <h3 className="divOfHeader-h3">Новости</h3>
+      </div>
+      <div></div>
       {dataFromServer.map((item) => {
         return (
           <div key={item.id} className="news-box">

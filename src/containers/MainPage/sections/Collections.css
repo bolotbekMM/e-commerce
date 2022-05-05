@@ -6,8 +6,13 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 11px 99px 64px 99px;
+  padding: 11px 99px 34px 99px;
   box-sizing: border-box;
+}
+
+.divOfHeader {
+  display: flex;
+  justify-content: center;
 }
 
 .divOfHeader h3 {
@@ -73,5 +78,3 @@
   height: 50.81px;
   margin-left: -118px;
 }
-
-

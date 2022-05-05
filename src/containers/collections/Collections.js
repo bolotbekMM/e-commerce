@@ -35,7 +35,7 @@ const Collections = () => {
   console.log(currentPosts, 'currentPosts');
   return (
     <div className="main-container">
-      <div className="divOfHeader">
+      <div className="divOfHeader-page">
         <h3 className="divOfHeader-h3">Коллекция</h3>
       </div>
       <ul className="big-box">
