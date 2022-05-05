@@ -46,7 +46,9 @@
   background-color: #ffffff;
 }
 
-.slideshowDot.active {
+.slideshowDot.activeee {
   background-color: #1d1d1b;
+  height: 8px;
+  width: 8px;
 }
 

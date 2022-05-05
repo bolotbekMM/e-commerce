@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import { ReactComponent as LikeIcon } from '../../assets/images/like.svg';
 import { ReactComponent as CartIcon } from '../../assets/images/shoppingBag1.svg';
 import { ReactComponent as DotIcon } from '../../assets/images/dot.svg';
@@ -9,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 import SearchInput from '../../components/UI/searchInput/SearchInput';
+import { getInfoSectionRequest, getLogoRequest } from '../../api/storeService';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,8 +17,30 @@ const Header = () => {
   const [dotNotificationFavorite, setDotNotificationFavorite] =
     React.useState(Boolean);
   const [dotNotificationCart, setDotNotificationCart] = React.useState(Boolean);
+  const [logo, setLogo] = React.useState();
+  const [telNumber, setTelNumber] = React.useState();
+
+  const getLogo = async () => {
+    try {
+      const response = await getLogoRequest();
+      setLogo(response.data.headerlogo);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getTelNumber = async () => {
+    try {
+      const response = await getInfoSectionRequest();
+      setTelNumber(response.data.telphones.mainPhone);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   React.useEffect(() => {
+    getTelNumber();
+    getLogo();
     setDotNotificationFavorite(true);
     setDotNotificationCart(true);
   }, []);
@@ -54,13 +76,21 @@ const Header = () => {
           </ul>
         </div>
         <div>
-          <span className="text-telphone">tel: </span>
-          <button className="tel-number">+996 000 000 000</button>
+          <span className="text-telphone">Тел: </span>
+          <a className="tel-number" href="tel:+996000000000">
+            {telNumber}
+          </a>
         </div>
       </div>
       <div className="navbar-bottom">
         <div>
-          <Logo onClick={iconClickHandler} className="icon-logo" />
+          <img
+            role="presentation"
+            src={logo}
+            onClick={iconClickHandler}
+            className="icon-logo"
+            alt="logo"
+          />
         </div>
         <div className="castom-input">
           <SearchInput

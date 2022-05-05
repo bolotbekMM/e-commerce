@@ -1,20 +1,26 @@
 import React from 'react';
-// import { useTheme } from '@mui/material/styles';
+
 import './GallerySection.css';
-import GalleryImage from '../../../assets/images/123.svg';
-
-const imagesss = [
-  GalleryImage,
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/2560px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
-  'https://static.dw.com/image/40525708_403.jpg',
-  'https://mymodernmet.com/wp/wp-content/uploads/2019/03/elements-of-art-thumbnail-1.jpg',
-  'https://hotpot.ai/images/site/ai/art_maker/teaser.jpg',
-];
-
+import { getGalleryImagesRequest } from '../../../api/storeService';
 
 const GallerySection = () => {
   const [index, setIndex] = React.useState(0);
   const timeoutRef = React.useRef(null);
+
+  const [imagesss, setImagesss] = React.useState([]);
+
+  const getGalleryImages = async () => {
+    try {
+      const response = await getGalleryImagesRequest();
+      setImagesss(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    getGalleryImages();
+  }, []);
 
   function resetTimeout() {
     if (timeoutRef.current) {
@@ -56,7 +62,7 @@ const GallerySection = () => {
           {imagesss.map((_, idx) => (
             <div
               key={idx}
-              className={`slideshowDot${index === idx ? ' active' : ''}`}
+              className={`slideshowDot${index === idx ? ' activeee' : ''}`}
               onClick={() => {
                 setIndex(idx);
               }}

@@ -1,11 +1,23 @@
 import React from 'react';
 import './InfoSection.css';
-import { ReactComponent as MoneyIcon } from '../../../assets/images/money.svg';
-import { ReactComponent as TrackIcon } from '../../../assets/images/truck.svg';
-import { ReactComponent as EarIcon } from '../../../assets/images/ear.svg';
-import { ReactComponent as ShopIcon } from '../../../assets/images/shop.svg';
+import { getNashiPreimushestvaRequest } from '../../../api/storeService';
 
 const InfoSection = () => {
+  const [dataFromServer, setdataFromServer] = React.useState({});
+  const getNashiPreimushestva = async () => {
+    try {
+      const response = await getNashiPreimushestvaRequest();
+      setdataFromServer(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  React.useEffect(() => {
+    getNashiPreimushestva();
+  }, []);
+
   return (
     <div className="main-container">
       <div className="last-box">
@@ -15,46 +27,54 @@ const InfoSection = () => {
         <div className="mini-boxes">
           <div className="box">
             <div className="divOfIcon">
-              <MoneyIcon className="box-icon" />
+              <img
+                src={dataFromServer.money?.url}
+                className="box-icon"
+                alt="money-Icon"
+              />
             </div>
             <div className="divOfParagraph">
-              <h4>Удобные способы оплаты</h4>
-              <p>Мы предлагаем возможность безналичной оплаты</p>
+              <h4>{dataFromServer.money?.title}</h4>
+              <p>{dataFromServer.money?.text}</p>
             </div>
           </div>
           <div className="box">
             <div className="divOfIcon">
-              <TrackIcon className="box-icon" />
+              <img
+                src={dataFromServer.truck?.url}
+                alt="truck-icon"
+                className="box-icon"
+              />
             </div>
             <div className="divOfParagraph">
-              <h4>Cвоевремнная доставка</h4>
-              <p>
-                100% гарантия возврата товара - 14 дней на возврат, без
-                скандалов и истерик.
-              </p>
+              <h4>{dataFromServer.truck?.title}</h4>
+              <p>{dataFromServer.truck?.text}</p>
             </div>
           </div>
           <div className="box">
             <div className="divOfIcon">
-              <EarIcon className="box-icon" />
+              <img
+                src={dataFromServer.earPhone?.url}
+                alt="truck-icon"
+                className="box-icon"
+              />
             </div>
             <div className="divOfParagraph">
-              <h4>Профессиональная консультация</h4>
-              <p>
-                Мы проконсультируем и индивидуально подойдем к Вашему заказу
-              </p>
+              <h4>{dataFromServer.earPhone?.title}</h4>
+              <p>{dataFromServer.earPhone?.text}</p>
             </div>
           </div>
           <div className="box">
             <div className="divOfIcon">
-              <ShopIcon className="box-icon" />
+              <img
+                src={dataFromServer.shop?.url}
+                alt="truck-icon"
+                className="box-icon"
+              />
             </div>
             <div className="divOfParagraph">
-              <h4>Акции и бонусы для покупателей</h4>
-              <p>
-                Промокоды со скидками для постоянных клиентов, акции на новые
-                позиции
-              </p>
+              <h4>{dataFromServer.shop?.title}</h4>
+              <p>{dataFromServer.shop?.text}</p>
             </div>
           </div>
         </div>

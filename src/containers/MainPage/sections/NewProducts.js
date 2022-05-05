@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewProducts.css';
 
-import Icon from '../../../assets/images/c.svg';
+import Icon from '../../../assets/images/bestsellerImages/bestseller8.jpg';
 import { ReButton } from '../../../components/UI/reButton/ReButton';
 
 const NewProducts = () => {
