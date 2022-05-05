@@ -55,8 +55,22 @@
   width: auto;
 }
 
-.arrow {
+.arrow111 {
   width: 10px;
   height: 17.5px;
   margin-left: 15px;
+}
+
+.name-of-collection {
+  position: absolute;
+  margin: 300px auto 12px auto;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #ffffff;
 }

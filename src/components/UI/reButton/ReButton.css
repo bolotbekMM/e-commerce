@@ -38,9 +38,11 @@
   text-align: center;
   color: #ffffff;
   border: none;
+  fill: #ffffff;
 }
 
-.long-button:hover{
+.long-button:hover {
   background: #ffffff;
-  color: #1D1D1B;
+  color: #1d1d1b;
+  fill: #1d1d1b;
 }

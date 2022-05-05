@@ -32,7 +32,7 @@ const Collections = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const howManyPages = Math.ceil(posts.length / postsPerPage);
   // const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  console.log(currentPosts, 'currentPosts');
   return (
     <div className="main-container">
       <div className="divOfHeader">

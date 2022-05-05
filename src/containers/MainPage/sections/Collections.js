@@ -2,9 +2,9 @@ import React from 'react';
 import './Collections.css';
 
 import Icon from '../../../assets/images/collectionsIcon/collectionimage6.png';
-import Icon2 from '../../../assets/images/collectionsIcon/collectionimage3.png';
+// import Icon2 from '../../../assets/images/collectionsIcon/collectionimage3.png';
 import Arrow from '../../../assets/images/arrowright.svg';
-import Triangle from '../../../assets/images/triangle.svg';
+// import Triangle from '../../../assets/images/triangle.svg';
 
 import { ReButton } from '../../../components/UI/reButton/ReButton';
 
@@ -29,8 +29,8 @@ const Collections = () => {
         </div>
         <div className="box2">
           <div className="divOfImagesss">
-            <img className="icon-img" src={Icon2} alt="icon" />
-            <img className="triangle" src={Triangle} alt="Triangle" />
+            {/* <img className="icon-img" src={Icon2} alt="icon" /> */}
+            {/* <img className="triangle" src={Triangle} alt="Triangle" /> */}
           </div>
           <div className="divOfNewCollectionButton">
             <ReButton buttonStyle="long-button">Смотреть все {'  >'} </ReButton>

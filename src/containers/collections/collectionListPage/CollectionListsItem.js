@@ -8,10 +8,17 @@ import { Link, useParams } from 'react-router-dom';
 const CollectionListsItem = ({ productItem }) => {
   const params = useParams();
   const idOfCollection = params.product;
+
   function ucFirst(str) {
     if (!str) return str;
     return str[0].toUpperCase() + str.slice(1);
   }
+
+  function discount(a, b) {
+    const result = (b * 100) / a;
+    return result.toFixed(0);
+  }
+
 
   return (
     <div className="box1">
@@ -21,7 +28,17 @@ const CollectionListsItem = ({ productItem }) => {
       >
         <div className="divOfImage">
           <img src={productItem.url} alt="icon" />
-          <img className="trianglee" src={Triangle} alt="Triangle" />
+          {!!productItem.oldprice && (
+            <>
+              <div className="div-of-triangle">
+                <img className="trianglee" src={Triangle} alt="Triangle" />
+
+                <span className="discount-calculatind-span">
+                  {`${discount(productItem.newprice, productItem.oldprice)} %`}
+                </span>
+              </div>
+            </>
+          )}
           {!!productItem.heard && (
             <img
               role="presentation"

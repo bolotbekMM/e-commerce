@@ -8,9 +8,15 @@
   flex-direction: column;
   padding: 11px 99px 64px 99px;
   box-sizing: border-box;
+  text-align: center;
 }
 
-.divOfHeader h3 {
+.divOfHeader-mainpage {
+  display: flex;
+  justify-content: center;
+}
+
+.bestseller-title {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
@@ -116,11 +122,32 @@
   color: #adadad;
 }
 
-.trianglee {
+.div-of-triangle {
   position: absolute;
+  margin-top: -441px;
+  margin-left: 0px;
+}
+
+.discount-calculatind-span {
+  position: absolute;
+  margin-left: -47px;
+  margin-top: 9px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+
+  transform: matrix(0.71, -0.7, 0.71, 0.71, 0, 0);
+}
+
+.trianglee {
+  position: relative;
   width: 51.04px;
   height: 50.81px;
-  margin-left: -286px;
 }
 
 .heard {
