@@ -1,0 +1,46 @@
+.main-container {
+  width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 11px 99px 64px 99px;
+  box-sizing: border-box;
+}
+
+.help-box {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  display: flex;
+}
+
+.help-image-div {
+  width: 500px;
+  height: 500px;
+}
+
+.help-accordion-outerdiv {
+  box-sizing: border-box;
+  margin: 0px auto auto 24px;
+}
+
+.help-title-div {
+  box-sizing: border-box;
+}
+
+.help-title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  color: #393939;
+
+  align-self: stretch;
+  margin: 0px 0px 12px;
+}

@@ -1,0 +1,48 @@
+.short-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 38px;
+  position: static;
+  background: #1d1d1b;
+  margin: 16px auto 16px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+
+.long-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 18px 12px 30px;
+  position: static;
+  color: white;
+  background: #1d1d1b;
+  margin: 0px 0px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  fill: #ffffff;
+}
+
+.long-button:hover {
+  background: #ffffff;
+  color: #1d1d1b;
+  fill: #1d1d1b;
+}
