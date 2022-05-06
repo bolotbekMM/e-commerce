@@ -1,0 +1,52 @@
+.main-container {
+  width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 11px 99px 44px 99px;
+}
+
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 1168px;
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 2000ms;
+}
+
+.slide {
+  display: inline-block;
+
+  height: 488px;
+  width: 1168px;
+}
+
+.slideshowDots {
+  text-align: center;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border: 0.5px solid rgba(29, 29, 27, 0.3);
+  border-radius: 50%;
+
+  cursor: pointer;
+  margin: 15px 7px 0px;
+
+  background-color: #ffffff;
+}
+
+.slideshowDot.activeee {
+  background-color: #1d1d1b;
+  height: 8px;
+  width: 8px;
+}
