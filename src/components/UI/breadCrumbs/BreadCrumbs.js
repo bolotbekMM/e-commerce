@@ -17,6 +17,7 @@ const Breadcrumbss = () => {
     favorites: 'Избранное',
     searchpage: 'Результаты поиска',
     help: 'Помощь',
+    cart: 'Корзина',
   };
   return (
     <div className="breadcrumb">
