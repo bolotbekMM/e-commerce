@@ -1,28 +1,27 @@
 import React from 'react';
-import './Bestseller.css';
-import { favoriteAction } from '../../../store';
+import './InterestedProducts.css';
+import { favoriteAction } from '../../store/index';
 
-import Triangle from '../../../assets/images/triangle.svg';
-import Heard from '../../../assets/images/heard.svg';
-import HeardWhite from '../../../assets/images/whiteheard.svg';
+import Triangle from '../../assets/images/triangle.svg';
+import Heard from '../../assets/images/heard.svg';
+import HeardWhite from '../../assets/images/whiteheard.svg';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const BestSellerItems = (props) => {
+const InterestedProductItems = (props) => {
   const { item } = props;
   const dispatch = useDispatch();
 
   const favoriteItems = useSelector((state) => state.favorites.favItems);
 
   const serchFevItem = favoriteItems.find((item) => item.id === props.item.id);
-  console.log(serchFevItem, 'yyyyyyyyyyyyy');
 
-  const handleAddToCart = (item) => {
+  const handleAddToFav = (item) => {
     dispatch(favoriteAction.addToFavorite(item));
   };
 
-  const handleRemoveFromCart = (item) => {
+  const handleRemoveFromFav = (item) => {
     dispatch(favoriteAction.removeFromFavorite(item));
   };
 
@@ -37,12 +36,12 @@ const BestSellerItems = (props) => {
   }
 
   return (
-    <div key={item.id} className="box1">
-      <div className="divOfImage">
-        <img src={item.url} alt="icon" />
+    <div key={item.id} className="box-int">
+      <div className="divOfImage-int">
+        <img className="image-int" src={item.url} alt="icon" />
         {!!item.oldprice && (
           <>
-            <div className="div-of-triangle">
+            <div className="div-of-triangle-int">
               <img className="trianglee" src={Triangle} alt="Triangle" />
 
               <span className="discount-calculatind-span">
@@ -55,7 +54,7 @@ const BestSellerItems = (props) => {
         {!!serchFevItem && (
           <img
             role="presentation"
-            onClick={() => handleRemoveFromCart(item)}
+            onClick={() => handleRemoveFromFav(item)}
             className="heard"
             src={Heard}
             alt="Heard"
@@ -64,7 +63,7 @@ const BestSellerItems = (props) => {
         {!serchFevItem && (
           <img
             role="presentation"
-            onClick={() => handleAddToCart(item)}
+            onClick={() => handleAddToFav(item)}
             className="heard"
             src={HeardWhite}
             alt="Heard"
@@ -73,30 +72,29 @@ const BestSellerItems = (props) => {
       </div>
 
       <Link to={`/${item.id}`}>
-        <div className="divOftitlee">
-          <h4 className="typeofcloses">{ucFirst(item.name)}</h4>
-
-          <p className="price">
-            <span>{!!item.oldprice ? item.oldprice : item.newprice} P</span>
+        <div className="divOftitle-int">
+          <p className="price-int">
             {!!item.oldprice ? (
-              <span className="oldPrice">{item.newprice} P</span>
+              <span className="oldPrice-int">{item.newprice} P</span>
             ) : (
               ''
             )}
+            <span>{!!item.oldprice ? item.oldprice : item.newprice} P</span>
           </p>
+          <h4 className="typeofcloses-int">{ucFirst(item.name)}</h4>
 
-          <p className="size">
-            <span>Размер:</span>{' '}
+          <p className="size-int">
+            <span>Размер:</span>
             <span>{`${item.sizemin}-${item.sizemax}`}</span>
           </p>
 
-          <div className="colors-section">
+          <div className="colors-section-int">
             {item.colors.map((color, index) => {
               return (
                 <div
                   key={index}
                   style={{ backgroundColor: `${color}` }}
-                  className="dot-div"
+                  className="dot-div-int"
                 ></div>
               );
             })}
@@ -107,4 +105,4 @@ const BestSellerItems = (props) => {
   );
 };
 
-export default BestSellerItems;
+export default InterestedProductItems;

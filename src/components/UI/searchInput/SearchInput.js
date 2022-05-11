@@ -5,10 +5,18 @@ import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import '../../../layout/header/Header.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function SearchInput(props) {
   const navigate = useNavigate();
-  const { inputValue, inputChangeHandler } = props;
+
+  const [posts, setPosts] = React.useState([]);
+
+  const cartItem = useSelector((state) => state.products.items);
+
+  React.useEffect(() => {
+    setPosts(cartItem);
+  }, [cartItem]);
 
   const submithandler = (event) => {
     event.preventDefault();
@@ -26,7 +34,7 @@ export default function SearchInput(props) {
           closeText="none"
           freeSolo
           id="free-solo-2-demo"
-          options={top100Films.map((option) => option.title)}
+          options={posts.map((option) => option.name)}
           renderInput={(params) => (
             <TextField
               // className={inputClasses.root}
@@ -38,6 +46,7 @@ export default function SearchInput(props) {
               }}
             />
           )}
+          
         />
       </StyledSelect>
     </form>

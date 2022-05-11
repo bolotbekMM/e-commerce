@@ -9,14 +9,13 @@ import './Header.css';
 
 import SearchInput from '../../components/UI/searchInput/SearchInput';
 import { getInfoSectionRequest, getLogoRequest } from '../../api/storeService';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const navigate = useNavigate();
   const [click, setClick] = React.useState(true);
   const [inputValue, setInputValue] = React.useState('');
-  const [dotNotificationFavorite, setDotNotificationFavorite] =
-    React.useState(Boolean);
-  const [dotNotificationCart, setDotNotificationCart] = React.useState(Boolean);
+  const [dotFavorite, setDotFavorite] = React.useState([]);
   const [logo, setLogo] = React.useState();
   const [telNumber, setTelNumber] = React.useState();
 
@@ -28,6 +27,17 @@ const Header = () => {
       console.log(error);
     }
   };
+
+  const [posts, setPosts] = React.useState([]);
+
+  const cartItem = useSelector((state) => state.cart.cartItems);
+  const favItem = useSelector((state) => state.favorites.favItems);
+
+  React.useEffect(() => {
+    setPosts(cartItem);
+    setDotFavorite(favItem);
+  }, [cartItem, favItem]);
+
 
   const getTelNumber = async () => {
     try {
@@ -41,8 +51,6 @@ const Header = () => {
   React.useEffect(() => {
     getTelNumber();
     getLogo();
-    setDotNotificationFavorite(true);
-    setDotNotificationCart(true);
   }, []);
 
   const inputChangeHandler = (e) => {
@@ -101,13 +109,8 @@ const Header = () => {
         <div className="favorit-cart">
           <Link to="/favorites" className="cart">
             <div className="divOfImages">
-              <LikeIcon
-                className="iconStyle"
-                onClick={() => {
-                  setDotNotificationFavorite((prev) => !prev);
-                }}
-              />
-              {dotNotificationFavorite && <DotIcon className="dotIcon" />}
+              <LikeIcon className="iconStyle" />
+              {dotFavorite.length > 0 && <DotIcon className="dotIcon" />}
             </div>
             Избранное
           </Link>
@@ -115,7 +118,7 @@ const Header = () => {
             <Link to="/cart" className="cart">
               <div className="divOfImages">
                 <CartIcon className="iconStyle" />
-                {dotNotificationCart && <DotIcon className="dotIcon" />}
+                {posts.length > 0 && <DotIcon className="dotIcon" />}
               </div>
               Корзина
             </Link>

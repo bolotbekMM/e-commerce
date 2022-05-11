@@ -30,3 +30,6 @@ export const getGalleryImagesRequest = () => {
  export const getCollectionRequest = () => {
     return axiosInstance.get('collections.json')
  }
+ export const getProductsRequest = () => {
+   return axiosInstance.get('products.json')
+}

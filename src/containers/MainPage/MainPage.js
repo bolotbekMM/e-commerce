@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './MainPage.css';
 import Bestseller from './sections/Bestseller';
 import Collections from './sections/Collections';

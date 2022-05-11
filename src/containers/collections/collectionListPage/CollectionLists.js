@@ -1,35 +1,38 @@
 import React from 'react';
 import '../../MainPage/sections/Bestseller.css';
 
-import { getCollectionRequest } from '../../../api/storeService';
 import CollectionListsItem from './CollectionListsItem';
 import Pagination from '../Pagination';
 import { useParams } from 'react-router-dom';
-
-// import { ReButton } from '../../../components/UI/reButton/ReButton';
+import { useSelector } from 'react-redux';
+import InterestedProductItems from '../../interestedProducts/InterestedProductsItems';
 
 const CollectionLists = () => {
   const params = useParams();
-  const idOfCollection = params.product;
+  const idOfCollection = +params.product;
 
   const [posts, setPosts] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [postsPerPage] = React.useState(12);
+  const [newProd, setNewProd] = React.useState([]);
+  const [count] = React.useState(5);
 
-  const getCollection = async () => {
-    try {
-      const response = await getCollectionRequest();
-      setPosts(
-        response.data.filter((item) => item.id === +idOfCollection)[0].products
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const interestedItem = useSelector((state) => state.products.items);
+  const newProducts = interestedItem.filter((item) => item?.newproduct);
 
   React.useEffect(() => {
-    getCollection();
-  }, []);
+    setNewProd(newProducts);
+  }, [interestedItem]);
+
+  const dataFromServerApi = useSelector((state) => state.products.items);
+
+  const filteredCollection = dataFromServerApi.filter(
+    (item) => item.collectionId === idOfCollection
+  );
+
+  React.useEffect(() => {
+    setPosts(filteredCollection);
+  }, [dataFromServerApi]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -38,8 +41,8 @@ const CollectionLists = () => {
 
   return (
     <div className="main-containerr">
-      <div className="divOfHeader">
-        <h3>Коллекция Лето 2020</h3>
+      <div style={{ marginTop: '32px' }}>
+        <h3 className="bestseller-title-int">Коллекция Лето 2020</h3>
       </div>
       <div className="big-box">
         {currentPosts.map((item) => {
@@ -49,6 +52,17 @@ const CollectionLists = () => {
       <div>
         <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
       </div>
+
+      <>
+        <div>
+          <h3 className="bestseller-title-int">Новинки</h3>
+        </div>
+        <div className="big-box-int">
+          {newProd.slice(0, count).map((item) => {
+            return <InterestedProductItems key={item.id} item={item} />;
+          })}
+        </div>
+      </>
     </div>
   );
 };
