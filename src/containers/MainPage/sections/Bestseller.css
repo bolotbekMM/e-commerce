@@ -58,6 +58,28 @@
   box-sizing: border-box;
 }
 
+.bestseller-title-int {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: right;
+  color: #393939;
+  margin-top: 2px;
+  margin-bottom: 18px;
+}
+
+.big-box-int {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  box-sizing: border-box;
+}
+
 .box1 {
   width: 286px;
   height: 536px;
@@ -190,3 +212,53 @@
   display: flex;
   justify-content: flex-start;
 }
+
+.publicOffer-div {
+  width: 100%;
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 16px;
+  gap: 10px;
+
+  box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.02);
+  text-align: left;
+}
+
+.publicOffer-text {
+  margin: 0px;
+  text-align: left;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 165%;
+
+  color: #5b5b5b;
+
+  align-self: stretch;
+}
+
+.no-result-in-search {
+  display: flex;
+  justify-content: start;
+  margin: 1px 0px 48px;
+}
+
+.no-result-in-search-span {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: #393939;
+}
+
+li.paging-item.active {
+  background-color: none;
+}
+

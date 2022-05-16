@@ -1,0 +1,176 @@
+.box-int {
+  width: 226px;
+  height: 416px;
+  margin-bottom: 8px;
+}
+
+.divOfImage-int {
+  box-sizing: border-box;
+  margin: 0px;
+  width: 226px;
+  height: 332px;
+}
+.image-int {
+  width: 226px;
+  height: 332px;
+}
+
+.divOftitle-int {
+  width: 226px;
+  height: 86px;
+  box-sizing: border-box;
+  padding: 6px 8px 10px;
+  text-align: left;
+}
+
+.typeofcloses-int {
+  margin: 8px 0px 6px;
+  text-align: left;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: justify;
+  color: #393939;
+  letter-spacing: 0.04em;
+}
+
+.price-int {
+  margin: 0;
+  display: flex;
+  text-align: justify;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #1d1d1b;
+}
+
+.price-int span {
+  margin-right: 8px;
+}
+.oldPrice-int {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: justify;
+  text-decoration-line: line-through;
+
+  color: #979797;
+}
+
+.size-int {
+  margin: 0;
+  text-align: left;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  color: #979797;
+}
+
+.dot-div-int {
+  border: 1px solid #d1d1d1;
+  border-radius: 30px;
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  margin-right: 14px;
+}
+.colors-section-int {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.div-of-triangle-int {
+  position: absolute;
+  margin-top: -336.2px;
+  margin-left: 0px;
+}
+
+/* .divOfHeader-mainpage {
+  display: flex;
+  justify-content: center;
+}
+
+.bestseller-title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  color: #393939;
+  margin-top: 2px;
+  margin-bottom: 18px;
+}
+
+.div-of-favorite-paragraph {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.favorite-p {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #979797;
+
+  margin: 0px 0px 16px;
+}
+.favorite-p span {
+  margin-left: 6px;
+} */
+
+/* .div-of-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+} */
+
+/*
+
+.discount-calculatind-span {
+  position: absolute;
+  margin-left: -47px;
+  margin-top: 9px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+
+  transform: matrix(0.71, -0.7, 0.71, 0.71, 0, 0);
+}
+
+.trianglee {
+  position: relative;
+  width: 51.04px;
+  height: 50.81px;
+}
+
+.heard {
+  position: absolute;
+  width: 24px;
+  height: 21px;
+  margin-left: -30px;
+  margin-top: 11px;
+} */

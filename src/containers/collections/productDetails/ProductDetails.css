@@ -61,16 +61,34 @@
   background: #ffffff;
 }
 
-.dot-div1 {
-  display: inline;
+.dot-div1-prod {
+  display: inline-block;
   border: 1px solid #d1d1d1;
-  border-radius: 30px;
-  width: 8px;
-  height: 8px;
-  /* margin-top: 10px;*/
-  margin-right: 12px;
+  border-radius: 6px;
+  width: 12px;
+  height: 12px;
+  margin: 0px;
 }
-.colors-section1 {
+
+.button-for-color-div {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: unset;
+}
+
+.button-for-color-div:hover {
+  border: 2px solid #d1d1d1;
+}
+.button-for-color-div:active {
+  border: 2px solid #d1d1d1;
+}
+
+.colors-section1-prod {
   display: flex;
   margin-left: 6px;
   justify-content: center;

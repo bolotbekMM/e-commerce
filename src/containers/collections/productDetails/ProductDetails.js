@@ -1,49 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getCollectionRequest } from '../../../api/storeService';
 import ProductDetailCard from './ProductDetailCard';
 import ProductDetailImages from './ProductDetailImages';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
   const params = useParams();
-  const idOfCollection = +params.product;
-  const prodDetails = +params.productDetails;
+  const prodIdParam = +params.productDetails;
+  const [productDetail, setproductDetail] = React.useState({});
 
-  const [details, setdetails] = React.useState([]);
-
-  const getCollection = async () => {
-    try {
-      const response = await getCollectionRequest();
-      if (!!idOfCollection) {
-        setdetails(
-          response.data
-            .filter((item) => item.id === idOfCollection)[0]
-            .products.filter((items) => items.id === prodDetails)[0]
-        );
-      }
-      if (!idOfCollection) {
-        response.data.map((item) => {
-          const product = item.products.find((item) => item.id === prodDetails);
-          return setdetails(product);
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const productDet = useSelector((state) => state.products.items).find(
+    (item) => item.id === prodIdParam
+  );
 
   React.useEffect(() => {
-    getCollection();
-  }, []);
+    setproductDetail(productDet);
+  }, [productDet]);
 
   return (
     <div className="main-boxDetail">
       <div>
-        <ProductDetailImages details={details} />
+        <ProductDetailImages details={productDetail} />
       </div>
       <div>
-        <ProductDetailCard details={details} />
+        <ProductDetailCard details={productDetail} />
       </div>
     </div>
   );

@@ -3,33 +3,20 @@ import './Bestseller.css';
 
 import { ReButton } from '../../../components/UI/reButton/ReButton';
 import BestSellerItems from './BestSellerItems';
-import { getCollectionRequest } from '../../../api/storeService';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Comp from './Comp';
 
 const Bestseller = () => {
   const [count, setCount] = React.useState(8);
   const [posts, setPosts] = React.useState([]);
 
-  const getBestsellerProducts = async () => {
+  const dataFromStoreApi = useSelector((state) => state.products.items);
 
-    try {
-      const response = await getCollectionRequest();
-      const best = [];
-      response.data.map((item) => {
-        item.products.filter((item) =>
-          item.bestseller ? best.push(item) : ''
-        );
-        return setPosts(best);
-
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const best = dataFromStoreApi.filter((item) => item.bestseller);
 
   React.useEffect(() => {
-    getBestsellerProducts();
-  }, []);
+    setPosts(best);
+  }, [dataFromStoreApi]);
 
   const addClickHandler = () => {
     setCount((count) => count + 4);
@@ -43,11 +30,7 @@ const Bestseller = () => {
       <div className="big-box">
         {posts.length !== 0 &&
           posts.slice(0, count).map((item) => {
-            return (
-              <Link to={`/${item.id}`} key={item.id}>
-                <BestSellerItems item={item} />
-              </Link>
-            );
+            return <BestSellerItems key={item.id} item={item} />;
           })}
       </div>
       <div className="div-of-button">

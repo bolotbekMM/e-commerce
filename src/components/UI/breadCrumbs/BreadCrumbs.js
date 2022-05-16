@@ -18,6 +18,7 @@ const Breadcrumbss = () => {
     searchpage: 'Результаты поиска',
     help: 'Помощь',
     cart: 'Корзина',
+    offert: 'Публичная оферта',
   };
   return (
     <div className="breadcrumb">

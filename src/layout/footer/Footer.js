@@ -112,7 +112,12 @@ const Footer = () => {
           </div>
           <div className="divOflist">
             <Whatsapp className="icons" />
-            <a className="Link" href={socialMedia.whatsapp}>
+            <a
+              target="_blank"
+              className="Link"
+              href={socialMedia.whatsapp}
+              rel="noreferrer"
+            >
               Whatsapp
             </a>
           </div>

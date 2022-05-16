@@ -1,73 +1,60 @@
 import React from 'react';
 import '../MainPage/sections/Bestseller.css';
-import { Link } from 'react-router-dom';
-import { getCollectionRequest } from '../../api/storeService';
 import BestSellerItems from '../MainPage/sections/BestSellerItems';
-import { ReButton } from '../../components/UI/reButton/ReButton';
+import { useSelector } from 'react-redux';
+import InterestedProductItems from '../interestedProducts/InterestedProductsItems';
 
 const Favorites = () => {
-  const [favoriteProducts, setFavoriteProducts] = React.useState([]);
+  const [posts, setPosts] = React.useState([]);
 
-  // потом нужно удалить
-  const getBestsellerProducts = async () => {
-    try {
-      const response = await getCollectionRequest();
-      const best = [];
-      response.data.map((item) => {
-        item.products.filter((item) =>
-          item.bestseller ? best.push(item) : ''
-        );
-        return setFavoriteProducts(best);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [interestedProd, setinterestedProd] = React.useState([]);
 
+  const [count] = React.useState(5);
+
+  const favItem = useSelector((state) => state.favorites.favItems);
+  const interestedItem = useSelector((state) => state.products.items);
+  const interstedProd = interestedItem.filter((item) => item?.oldprice);
 
   React.useEffect(() => {
-    getBestsellerProducts();
-  }, []);
-// потом нужно удалить
-  const [count, setCount] = React.useState(8);
+    setPosts(favItem);
+    setinterestedProd(interstedProd);
+  }, [favItem, interestedItem]);
 
-  const addClickHandler = () => {
-    setCount((count) => count + 4);
-  };
   return (
     <div className="main-containerr">
       <div className="divOfHeader-page">
         <h3 className="bestseller-title">Избранное</h3>
       </div>
       <div className="div-of-favorite-paragraph">
-        {!!favoriteProducts.length ? (
+        {posts.length > 0 ? (
           <p className="favorite-p">
-            Товаров в избранном:<span>{favoriteProducts.length}</span>
+            Товаров в избранном:<span>{posts.length}</span>
           </p>
         ) : (
           <p className="favorite-p">У Вас пока нет избранных товаров</p>
         )}
       </div>
 
-      <div className="big-box">
-          {/* потом надо отсавить только state */}
-        {favoriteProducts.length !== 0 &&
-          favoriteProducts.slice(0, count).map((item) => {
-            return (
-              <Link to={`/${item.id}`} key={item.id}>
-                <BestSellerItems item={item} />
-              </Link>
-            );
+      {posts.length > 0 && (
+        <div className="big-box">
+          {posts.map((item) => {
+            return <BestSellerItems key={item.id} item={item} />;
           })}
-      </div>
-      <div className="div-of-button">
-          {/* потом надо удалить */}
-        {count === 16 || (
-          <ReButton buttonStyle="short-button" onClick={addClickHandler}>
-            Еще
-          </ReButton>
-        )}
-      </div>
+        </div>
+      )}
+
+      {posts.length === 0 && (
+        <>
+          <div>
+            <h3 className="bestseller-title-int">Возможно Вас заинтересует</h3>
+          </div>
+          <div className="big-box-int">
+            {interestedProd.slice(0, count).map((item) => {
+              return <InterestedProductItems key={item.id} item={item} />;
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 };
