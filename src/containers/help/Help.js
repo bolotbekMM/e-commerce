@@ -7,6 +7,7 @@ import { getAccardionDataRequest } from '../../api/storeService';
 
 const Help = () => {
   const [accordionData, setaccordionData] = React.useState([]);
+
   const getAccardionData = async () => {
     try {
       const response = await getAccardionDataRequest();
@@ -20,9 +21,6 @@ const Help = () => {
     getAccardionData();
   }, []);
 
-  console.log(accordionData, 'dataFromServer');
-
-  // getAccardionDataRequest
   return (
     <div className="main-container">
       <div className="help-box">
