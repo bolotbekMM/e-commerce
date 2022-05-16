@@ -9,7 +9,9 @@ import HeardWhite from '../../../assets/images/whiteheard.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const BestSellerItems = (props) => {
+import Carousel from 'nuka-carousel';
+
+const Comp = (props) => {
   const { item } = props;
   const dispatch = useDispatch();
 
@@ -38,7 +40,30 @@ const BestSellerItems = (props) => {
   return (
     <div key={item.id} className="box1">
       <div className="divOfImage">
-        <img src={item.url} alt="icon" />
+        <Carousel
+          wrapAround={true}
+          className="caruselle-in-comp"
+          swiping={true}
+          withoutControls={true}
+        >
+          <img src={item.url} alt="icon" />
+          {!!item.url2 ? (
+            <img src={item.url2} alt="icon" />
+          ) : (
+            <img src={item.url} alt="icon" />
+          )}
+          {!!item.url3 ? (
+            <img src={item.url3} alt="icon" />
+          ) : (
+            <img src={item.url} alt="icon" />
+          )}
+          {!!item.url4 ? (
+            <img src={item.url4} alt="icon" />
+          ) : (
+            <img src={item.url} alt="icon" />
+          )}
+        </Carousel>
+
         {!!item.oldprice && (
           <>
             <div className="div-of-triangle">
@@ -76,16 +101,9 @@ const BestSellerItems = (props) => {
           <h4 className="typeofcloses">{ucFirst(item.name)}</h4>
 
           <p className="price">
-            <span>
-              {!!item.oldprice
-                ? item.oldprice.toLocaleString()
-                : item.newprice.toLocaleString()}
-              P
-            </span>
+            <span>{!!item.oldprice ? item.oldprice : item.newprice} P</span>
             {!!item.oldprice ? (
-              <span className="oldPrice">
-                {item.newprice.toLocaleString()} P
-              </span>
+              <span className="oldPrice">{item.newprice} P</span>
             ) : (
               ''
             )}
@@ -113,4 +131,4 @@ const BestSellerItems = (props) => {
   );
 };
 
-export default BestSellerItems;
+export default Comp;

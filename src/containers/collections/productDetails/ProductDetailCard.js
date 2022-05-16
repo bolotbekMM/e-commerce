@@ -67,17 +67,21 @@ const ProductDetailCard = (props) => {
         <div>
           <div className="articul-cvet">
             Цвет:
-            <div className="colors-section1">
+            <div className="colors-section1-prod">
               {details?.colors &&
                 details?.colors.map((color, index) => {
                   // <ProductDetailColor key={index} color={color} />;
                   return (
                     <div
                       key={index}
-                      style={{ backgroundColor: `${color}` }}
                       onClick={() => selectColor(color)}
-                      className="dot-div1"
-                    ></div>
+                      className="button-for-color-div"
+                    >
+                      <div
+                        style={{ backgroundColor: `${color}` }}
+                        className="dot-div1-prod"
+                      ></div>
+                    </div>
                   );
                 })}
             </div>
@@ -86,8 +90,15 @@ const ProductDetailCard = (props) => {
       </div>
 
       <h3 className="prod-price">
-        {!!details?.oldprice ? details?.oldprice : details?.newprice} р
-        {!!details?.oldprice ? <span>{details?.newprice} р</span> : ''}
+        {!!details?.oldprice
+          ? details?.oldprice.toLocaleString()
+          : details?.newprice}
+        р
+        {!!details?.oldprice ? (
+          <span>{details?.newprice.toLocaleString()} р</span>
+        ) : (
+          ''
+        )}
       </h3>
       <div>
         <p className="otovare">О товаре:</p>

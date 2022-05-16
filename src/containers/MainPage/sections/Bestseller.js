@@ -4,6 +4,7 @@ import './Bestseller.css';
 import { ReButton } from '../../../components/UI/reButton/ReButton';
 import BestSellerItems from './BestSellerItems';
 import { useSelector } from 'react-redux';
+import Comp from './Comp';
 
 const Bestseller = () => {
   const [count, setCount] = React.useState(8);

@@ -33,3 +33,7 @@ export const getGalleryImagesRequest = () => {
  export const getProductsRequest = () => {
    return axiosInstance.get('products.json')
 }
+
+export const getPublicOffertRequest = () => {
+   return axiosInstance.get('publicOffer.json')
+}

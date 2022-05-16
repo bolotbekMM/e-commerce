@@ -19,8 +19,6 @@ const CartShop = () => {
     setinterestedProd(interstedProd);
   }, [cartItem, interestedItem]);
 
-  console.log(cartItem, 'cartItem');
-
   return (
     <div className="main-container">
       <>

@@ -84,8 +84,8 @@
   border: 1px solid #e0e0e0;
   box-sizing: border-box;
   /* padding: 11px 20px 13px; */
-  background: url('../../assets/images/search.svg') no-repeat right 12px top
-    18px;
+  /* background: url('../../assets/images/search.svg') no-repeat right 12px top */
+    /* 18px; */
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
@@ -153,6 +153,56 @@
   height: 24px;
   margin-right: 10px;
   box-sizing: content-box;
+}
+
+.float-buttons-div {
+  position: relative;
+}
+
+.scroll-top-arrow {
+  position: fixed;
+  left: 91%;
+  top: 76%;
+  z-index: 1;
+}
+
+.MessageIcon {
+  position: fixed;
+  left: 91%;
+  /* right: 4.98%; */
+  top: 85%;
+  z-index: 1;
+}
+
+.closeIcon {
+  position: fixed;
+  left: 91.2%;
+  /* right: 4.98%; */
+  top: 85%;
+  z-index: 1;
+}
+
+.telephone {
+  position: fixed;
+  left: 87%;
+  /* right: 4.98%; */
+  top: 83%;
+  z-index: 1;
+}
+
+.whatsapp {
+  position: fixed;
+  left: 83.5%;
+  /* right: 4.98%; */
+  top: 83%;
+  z-index: 1;
+}
+.telegram2 {
+  position: fixed;
+  left: 79.9%;
+  /* right: 4.98%; */
+  top: 83%;
+  z-index: 1;
 }
 
 /* .nav-links {

@@ -18,6 +18,7 @@ const GallerySection = () => {
     }
   };
 
+  
   React.useEffect(() => {
     getGalleryImages();
   }, []);

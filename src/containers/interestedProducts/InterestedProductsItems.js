@@ -75,11 +75,18 @@ const InterestedProductItems = (props) => {
         <div className="divOftitle-int">
           <p className="price-int">
             {!!item.oldprice ? (
-              <span className="oldPrice-int">{item.newprice} P</span>
+              <span className="oldPrice-int">
+                {item.newprice.toLocaleString()} P
+              </span>
             ) : (
               ''
             )}
-            <span>{!!item.oldprice ? item.oldprice : item.newprice} P</span>
+            <span>
+              {!!item.oldprice
+                ? item.oldprice.toLocaleString()
+                : item.newprice.toLocaleString()}{' '}
+              P
+            </span>
           </p>
           <h4 className="typeofcloses-int">{ucFirst(item.name)}</h4>
 

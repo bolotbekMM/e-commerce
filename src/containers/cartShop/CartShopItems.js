@@ -45,16 +45,28 @@ const CartShopItems = ({ item }) => {
           </p>
         </div>
 
-        <div className="cart-tem-color-div ">
+        <div className="cart-tem-color-div-prod">
           Цвет:
-          <div
-            className="dot-div1"
-            style={{ backgroundColor: item.color, display: 'inline-block' }}
-          ></div>
+          <div className="colors-section1-prod">
+            <div className="button-for-color-div">
+              <div
+                className="dot-div1-prod"
+                style={{ backgroundColor: item.color, display: 'inline-block' }}
+              ></div>
+            </div>
+          </div>
         </div>
+
         <h3 className="cart-item-price">
-          {!!item?.oldprice ? item?.oldprice : item?.newprice} р
-          {!!item?.oldprice ? <span>{item?.newprice} р</span> : ''}
+          {!!item?.oldprice
+            ? item?.oldprice.toLocaleString()
+            : item?.newprice.toLocaleString()}{' '}
+          р
+          {!!item?.oldprice ? (
+            <span>{item?.newprice.toLocaleString()} р</span>
+          ) : (
+            ''
+          )}
         </h3>
         <div className="cart-item-div-of-button">
           <button

@@ -100,14 +100,14 @@
   margin-left: 4px;
 }
 
-.cart-tem-color-div {
+.cart-tem-color-div-prod {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-
-  text-align: justify;
+  display: flex;
+  justify-content: flex-start;
 
   color: #7c7c7c;
 
